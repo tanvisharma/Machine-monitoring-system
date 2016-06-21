@@ -1,0 +1,22 @@
+const int grndpin = 18;
+const int vcc= 19;
+const int xpin = A3;
+const int ypin = A2;
+const int zpin = A1;
+
+void setup(){
+  Serial.begin(9600);
+  Serial.println("Ready!");
+  pinMode(grndpin, OUTPUT);
+  pinMode(vcc, OUTPUT);
+  digitalWrite(grndpin, LOW);
+  digitalWrite(vcc, HIGH);
+}
+
+void loop(){
+  if(analogRead(xpin)){
+    int inByte = analogRead(xpin)+analogRead(ypin)+analogRead(zpin);
+    Serial.println(inByte);
+  }
+  delay(1000);
+}
